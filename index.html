@@ -1,1 +1,152 @@
-#Twitter data analysis using REST APIs
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Twitter-analysis by sumeet144</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Twitter-analysis</h1>
+        <p>Python code for Twitter streaming API to collect twitter data on a reality TV series, clean the data, analyze the data, and create data visualizations</p>
+
+        <p class="view"><a href="https://github.com/sumeet144/Twitter-Analysis">View the Project on GitHub <small>sumeet144/Twitter-Analysis</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/sumeet144/Twitter-Analysis/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/sumeet144/Twitter-Analysis/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/sumeet144/Twitter-Analysis">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h3>
+<a id="about-project" class="anchor" href="#about-project" aria-hidden="true"><span class="octicon octicon-link"></span></a>About Project</h3>
+
+<p>Collected, analyzed, and classified tweets related to the Lifetime television show Dance Moms. Dance Moms is a successful and frequently tweeted reality based show. It currently airs every Tuesday night. It is in its fifth season, and has a viewership of several million people. The official Dance Moms twitter account has about 500,000 followers, and individual show character accounts have up to about 450,000 followers. </p>
+
+<p>The idea of the project was to answer the below question:
+Question: When Twitters users Tweet about Dance Moms, do they tweet more about the dancing
+element, or more about the dramatic interactions between the characters?</p>
+
+<h3>
+<a id="data-collection" class="anchor" href="#data-collection" aria-hidden="true"><span class="octicon octicon-link"></span></a>Data Collection</h3>
+
+<p>I used python programming to create a listener to collect live tweets using Twitter REST APIs. TwitterStreaming.py and mylistener.py python code are used to collect data based on a keyword list and twitter handles of the characters, who are associated with the show. </p>
+
+<h3>
+<a id="data-cleaning" class="anchor" href="#data-cleaning" aria-hidden="true"><span class="octicon octicon-link"></span></a>Data Cleaning</h3>
+
+<p>Wrote cleaningScript.py to clean the data and kept the relevant tweets/retweets for answering the question.
+Some of the rules that I followed are given below - 
+ Tweets having hashtag reference to the show and its characters
+ Tweets having references to fighting, dancing in relation to the reality show Dance Moms</p>
+
+<h3>
+<a id="data-analysis" class="anchor" href="#data-analysis" aria-hidden="true"><span class="octicon octicon-link"></span></a>Data Analysis</h3>
+
+<p>I followed the below code book to write the python code to identify the sentiment in the tweets. Below code book is followed to code in python. 
+The goal of coding this dataset is to classify tweets as either relating to dancing, relating to fighting, or as unrelated to dancing or fighting. This is a very subjective task, and we ask the coder to carefully evaluate each tweet, and use their best judgment in order to classify it. Below are a set of guidelines the coder should use help them determine which category a tweet belongs in.</p>
+
+<ul>
+<li>Ignore URLs included in a tweet.</li>
+<li>Ignore tweets that are written in foreign language.</li>
+<li>Ignore an emoji included in a tweet.</li>
+<li>If there is “fighting” language not related to the show itself, ignore it.</li>
+<li>If there are strong feeling about the show, but it is not related to a specific component of the show, mark it not  applicable.</li>
+<li>Spelling errors/typos, try and make a reasonable guess as to the intention of the tweeter</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Dancing</th>
+<th>Fighting</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<em>Step 1</em> Please use the definition as the principle classification method.</td>
+<td>
+<em>Definition:</em> If the tweet is mainly about dance: dance clothing, dance competition, dance maneuvers or if the word dance is used to describe dancing in any other way.</td>
+<td>
+<em>Definition:</em> If the tweet is mainly about drama: arguing, yelling, dramatic events, disagreements, abuse, or jealousy related to the characters on the show.</td>
+</tr>
+<tr>
+<td>
+<em>Step 2</em> If the tweet is difficult to classify based on the definition, use this list of keywords. If there are one or multiple keywords found, use that information to help in classification.</td>
+<td>If the tweet contains the following words:Dancing, Dance competition,Talent, Performance, Ballet, #dance, studio, Dancer, Point toes, Jazz, Gifted, Win, Lose, Dance lessons,  Vote, Solo, Choreography, Recital, Practice, Routine, Danceoff, Team, Training</td>
+<td>If the tweet contains the following words: Fight, Hit, Yell, Hate, Scream, Bitch, Hypocrite, Crazy, Crying, Arrested, Angry, War, Get(s) along, Abuse, Beast, Mean, Drama, Pissed, Annoying, Frustrated, Disgrace, Jealous, Lost her shit, Rabid, Murderous, Going off, Assault, Catty</td>
+</tr>
+</tbody>
+</table>
+
+<h3>
+<a id="results" class="anchor" href="#results" aria-hidden="true"><span class="octicon octicon-link"></span></a>Results</h3>
+
+<p>I performed two analyses from our original cleaned data set. One dataset which included all retweets, and one which did not include any. The data set which included retweets (dataset#1) had the following breakdown (Table 1): 11% dancing, 13% fighting, 76% not applicable. The dataset where retweets were removed (dataset #2) was as follows: 13% dancing, 17%
+fighting, and 70% not applicable.</p>
+
+<table>
+<thead>
+<tr>
+<th>Dataset</th>
+<th>Dancing</th>
+<th>Fighting</th>
+<th>Not Applicable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dataset #1 27,337 with retweets</td>
+<td>11%</td>
+<td>13%</td>
+<td>76%</td>
+</tr>
+<tr>
+<td>Dataset #2 18,149 with retweets removed</td>
+<td>13%</td>
+<td>17%</td>
+<td>70%</td>
+</tr>
+</tbody>
+</table>
+
+<p>Table 1. Classification of Dataset #1 and #2 through a combination of human coding and machine learning algorithm coding.</p>
+
+<h3>
+<a id="data-visualizations" class="anchor" href="#data-visualizations" aria-hidden="true"><span class="octicon octicon-link"></span></a>Data Visualizations</h3>
+
+<p>Performed exploratory data analysis and created some visualizations, which are available at <a href="http://twitteranalysis.blogspot.com/">Visualizations</a></p>
+
+<h3>
+<a id="conclusion" class="anchor" href="#conclusion" aria-hidden="true"><span class="octicon octicon-link"></span></a>Conclusion</h3>
+
+<p>Reality television is often fueled by conflict, but almost never by conflict alone. There is almost always an underlying story or event that provides context and depth to the conflict the viewer enjoys watching. In the case of Dance Moms, the conflict is contrasted with dancing. What brings viewers to watch reality television is often hard to identify. This remains true when it comes to what compels viewers to tweet as well. It is expected that an analysis of tweets would reveal a mixture of responses from the actual storyline, and the conflict that surrounds the storyline. In fact, this is what we found with Dance Moms.</p>
+
+<p>The results give us insight into the original question: what do people tweet about when they tweet about Dance Momsdancing
+or fighting? When retweets are counted throughout the week, the numbers are a close to even, although fighting still comes out on top. Fighting had about 2% more tweets relative to the total body of tweets, than its dancing counterpart.</p>
+
+<p>The results indicate that when only original content is considered and retweets are ignored (dataset #2), tweets are more skewed towards fighting over the actual dancing itself. In fact, in this instance there were about 4% more tweets about fighting than there were about dancing over our data collection week.</p>
+
+<p>Based on the analysis, Twitter users tweet about Dance Moms tweet more frequently about fighting than they do about dancing. This difference becomes more pronounced when retweets are excluded from the analysis.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/sumeet144">sumeet144</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
